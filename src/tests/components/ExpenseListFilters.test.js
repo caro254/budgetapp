@@ -15,7 +15,7 @@ beforeEach(() => {
   wrapper = shallow(
     <ExpenseListFilters
       filters={filters}
-      sortTextFIlter={setTextFilter}
+      sortTextFilter={setTextFilter}
       sortByDate={sortByDate}
       sortByAmount={sortByAmount}
       setStartDate={setStartDate}
@@ -26,7 +26,7 @@ beforeEach(() => {
 test("should render ExpenseListFilters correctly", () => {
   expect(wrapper).toMatchSnapshot();
 });
-test("should render ExpenseList with alt data correctly", () => {
+test("should render ExpenseListFilters with alt data correctly", () => {
   wrapper.setProps({
     filters: altFilters
   });
