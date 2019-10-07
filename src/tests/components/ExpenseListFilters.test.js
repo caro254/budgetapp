@@ -11,11 +11,12 @@ beforeEach(() => {
   sortByDate = jest.fn();
   sortByAmount = jest.fn();
   sortByDate = jest.fn();
+  setStartDate = jest.fn();
   setEndDate = jest.fn();
   wrapper = shallow(
     <ExpenseListFilters
       filters={filters}
-      sortTextFilter={setTextFilter}
+      setTextFilter={setTextFilter}
       sortByDate={sortByDate}
       sortByAmount={sortByAmount}
       setStartDate={setStartDate}
@@ -67,7 +68,7 @@ test("should handle date change", () => {
   const endDate = moment(0).add(3, "years");
   wrapper.find("DateRangePicker").prop("onDatesChange")({ startDate, endDate });
   expect(setStartDate).toHaveBeenCalledWith(startDate);
-  expect(setEndDate).toHaveBeenthCalledWith(endDate);
+  expect(setEndDate).toHaveBeenCalledWith(endDate);
 });
 
 test("should handle date focus  change", () => {
