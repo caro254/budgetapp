@@ -7,7 +7,7 @@ import { filters, altFilters } from "../fixtures/filters";
 let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
 
 beforeEach(() => {
-  setTextFIlter = jest.fn();
+  setTextFilter = jest.fn();
   sortByDate = jest.fn();
   sortByAmount = jest.fn();
   sortByDate = jest.fn();
