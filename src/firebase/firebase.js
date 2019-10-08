@@ -14,3 +14,5 @@ const firebaseConfig = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+
+database.ref().set("very strange program");
