@@ -8,6 +8,7 @@ import {
   removeExpense
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
+import database from "../..//firebase/firebase";
 
 const createMockStore = configureMockStore([thunk]);
 
@@ -46,8 +47,21 @@ test("should add expense to database and store", done => {
     createdAt: 9000
   };
 
-  store.dispatch(startAddExpense(expenseData)).then(() => {
-    expect(2).toBe(2);
-    done();
-  });
+  store
+    .dispatch(startAddExpense(expenseData))
+    .then(() => {
+      const sctions = store.getActions();
+      expect(actions[0]).toEqual({
+        TYPE: "ADD_EXPENSE",
+        expense: {
+          id: expect.any(String),
+          ...expenseData
+        }
+      });
+      return database.ref(`expenses/${actions[0].expense.id}`).once("value");
+    })
+    .then(snapshot => {
+      expect(snapshot.va()).toEqual(expenseData);
+      done();
+    });
 });
